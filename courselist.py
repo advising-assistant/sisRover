@@ -4,12 +4,46 @@
 import requests
 import json
 from course import Course
+import urllib.parse
+
+def dict_to_url_params(d):
+    return "?" + "&".join([str(key) + "=" + urllib.parse.quote(str(value),safe="") for key,value in d.items()])
+
+url_params = {
+    'institution': 'UVA01',
+    'term': "1202",
+    'date_from': '01/01/1971',
+    'date_thru': '12/31/2200',
+    'subject': 'CS',
+    'catalog_nbr': '',
+    'time_range': '0,23.5',
+    'days': '',
+    'campus': '',
+    'location': '',
+    'acad_career': '',
+    'acad_group': '',
+    'rqmnt_designtn': '',
+    'instruction_mode': '',
+    'keyword': '',
+    'class_nbr': '',
+    'acad_org': '',
+    'enrl_stat': '',
+    'crse_attr': '',
+    'crse_attr_value': '',
+    'instructor_name': '',
+    'session_code': '',
+    'units': ''
+} # page left out
+
+BASE_URL = "https://sisuva.admin.virginia.edu/psc/ihprd/UVSS/SA/s/WEBLIB_HCX_CM.H_CLASS_SEARCH.FieldFormula.IScript_ClassSearch"
 
 def makeRequest(search_mnem, term, page):
+    global url_params
     # Returns the JSON of search results for one page of results
     s = requests.Session()
-    results_url = s.get("https://sisuva.admin.virginia.edu/psc/ihprd/UVSS/SA/s/WEBLIB_HCX_CM.H_CLASS_SEARCH.FieldFormula.IScript_ClassSearch?institution=UVA01&term="+term+"&date_from=01%2F01%2F1971&date_thru=12%2F31%2F2200&subject="+search_mnem+"&catalog_nbr=&time_range=0%2C23.5&days=&campus=&location=&acad_career=&acad_group=&rqmnt_designtn=&instruction_mode=&keyword=&class_nbr=&acad_org=&enrl_stat=&crse_attr=&crse_attr_value=&instructor_name=&session_code=&units=&page="+str(page))
-    # results_url = s.get("https://sisuva.admin.virginia.edu/psc/ihprd/UVSS/SA/s/WEBLIB_HCX_CM.H_CLASS_SEARCH.FieldFormula.IScript_ClassSearch?institution=UVA01&term="+term+"&subject="+search_mnem+"&catalog_nbr=&time_range=0%2C23.5&days=&campus=&location=&acad_career=&acad_group=&rqmnt_designtn=&instruction_mode=&keyword=&class_nbr=&acad_org=&enrl_stat=&crse_attr=&crse_attr_value=&instructor_name=&session_code=&units=&page="+str(page))
+
+    url = BASE_URL + dict_to_url_params(url_params) + "&page=" + str(page)
+    results_url = s.get(url)
     return results_url.text
 
 
