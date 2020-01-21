@@ -16,6 +16,6 @@ print("There are", num, computer.mnemonic, "courses being offered in term", comp
 
 print("courses taught by Aaron Bloomfield:")
 for c in computer.courses:
-	for instPair in c.instructors:
-		if instPair[0] == "Aaron Bloomfield":
-			print(c.subject, c.catalog_nbr+":", c.descr)
+    for instPair in c.instructors:
+        if instPair[0] == "Aaron Bloomfield":
+            print(c.subject, c.catalog_nbr+":", c.descr)
