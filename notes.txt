@@ -1,0 +1,66 @@
+All Keys:
+- index
+- crse_id: Course ID
+- crse_offer_nbr
+- strm: term number
+- session_code
+- session_descr (e.g. "Short Add")
+- class_section
+- location
+- location_descr
+- start_dt
+- end_dt
+- class_stat
+- campus
+- campus_descr
+- class_nbr
+- acad_career
+- acad_career_descr
+- component
+- subject
+- subject_descr
+- catalog_nbr
+- class_type
+- schedule_print
+- acad_group
+- instruction_mode
+- instruction_mode_descr
+- acad_org
+- wait_tot
+- wait_cap
+- class_capacity
+- enrollment_total
+- enrollment_available
+- descr
+- rqmnt_designtn
+- units
+- combined_section
+- enrl_stat
+- enrl_stat_descr
+- topic
+- instructors
+- section_type
+- class_meeting_patterns
+- crse_attr
+- crse_attr_value
+- reserve_caps
+
+The following seem to have the same value in most courses:
+- crse_offer_nbr
+- strm
+- session_code
+- session_descr
+- location
+- location_descr
+- start_dt
+- end_dt
+- class_stat
+- campus
+- campus_descr
+- subject
+- subject_descr
+- schedule_print
+- acad_group
+- acad_org
+- reserve_caps
+-
